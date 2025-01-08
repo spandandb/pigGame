@@ -169,3 +169,8 @@ main {
 .hidden {
   display: none;
 }
+
+.disabled {
+  cursor: none;
+  opacity: 0.2;
+}
