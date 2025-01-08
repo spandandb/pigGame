@@ -11,12 +11,13 @@ const player0 = document.querySelector(".player--0");
 const player1 = document.querySelector(".player--1");
 const player0Title = document.querySelector("#name--0");
 const player1Title = document.querySelector("#name--1");
+const newGameBtn = document.querySelector(".btn--new");
 
 dice.classList.add("hidden");
-let score0 = Number(score0El.textContent);
-let score1 = Number(score1El.textContent);
-let currScore0 = Number(current0El.textContent);
-let currScore1 = Number(current1El.textContent);
+let score0 = 0;
+let score1 = 0;
+let currScore0 = 0;
+let currScore1 = 0;
 
 rollBtn.addEventListener("click", function () {
   const randomNumber = Math.trunc(Math.random() * 6) + 1;
@@ -54,6 +55,31 @@ holdBtn.addEventListener("click", function () {
   currScore0 = 0;
   currScore1 = 0;
   switchPlayer();
+});
+
+newGameBtn.addEventListener("click", function () {
+  score0 = 0;
+  score1 = 0;
+  currScore0 = 0;
+  currScore1 = 0;
+  rollBtn.classList.remove("disabled");
+  holdBtn.classList.remove("disabled");
+  rollBtn.removeAttribute("disabled");
+  holdBtn.removeAttribute("disabled");
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+
+  dice.classList.add("hidden");
+
+  if (player1.classList.contains("player--active")) {
+    player1.classList.remove("player--active");
+    player0.classList.add("player--active");
+    player1Title.textContent = "Player 2";
+    return;
+  }
+  player0Title.textContent = "Player 1";
 });
 
 function switchPlayer() {
