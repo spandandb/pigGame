@@ -44,3 +44,19 @@ btnRoll.addEventListener("click", function () {
     document.querySelector(`#current--${activePlayer}`).textContent = currScore;
   }
 });
+
+btnHold.addEventListener("click", function () {
+  if (isPlaying) {
+    scores[activePlayer] += currScore;
+    document.querySelector(`#score--${activePlayer}`).textContent =
+      scores[activePlayer];
+    if (scores[activePlayer] >= 30) {
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add("player--winner");
+      isPlaying = false;
+      return;
+    }
+    switchPlayer();
+  }
+});
