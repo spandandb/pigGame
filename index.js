@@ -17,6 +17,14 @@ const init = function () {
   currScore = 0;
   isPlaying = true;
   activePlayer = 0;
+  document.querySelector(`#current--0`).textContent = currScore;
+  document.querySelector(`#current--1`).textContent = currScore;
+  document.querySelector(`#score--0`).textContent = 0;
+  document.querySelector(`#score--1`).textContent = 0;
+  player0.classList.remove("player--winner");
+  player1.classList.remove("player--winner");
+  player0.classList.add("player--active");
+  player1.classList.remove("player--active");
 };
 
 const switchPlayer = function () {
@@ -60,3 +68,5 @@ btnHold.addEventListener("click", function () {
     switchPlayer();
   }
 });
+
+btnNewGame.addEventListener("click", init);
