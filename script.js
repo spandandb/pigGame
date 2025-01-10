@@ -40,6 +40,7 @@ holdBtn.addEventListener("click", function () {
     score0El.textContent = score0;
     if (score0 > 30) {
       player0Title.textContent = "✅ You Win";
+      player0.classList.add("player--winner");
       buttonDisabler();
       return;
     }
@@ -48,6 +49,7 @@ holdBtn.addEventListener("click", function () {
     score1El.textContent = score1;
     if (score1 > 30) {
       player1Title.textContent = "✅ You Win";
+      player1.classList.add("player--winner");
       buttonDisabler();
       return;
     }
@@ -72,6 +74,9 @@ newGameBtn.addEventListener("click", function () {
   score1El.textContent = 0;
 
   dice.classList.add("hidden");
+
+  player1.classList.remove("player--winner");
+  player0.classList.remove("player--winner");
 
   if (player1.classList.contains("player--active")) {
     player1.classList.remove("player--active");
